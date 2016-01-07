@@ -1,0 +1,11 @@
+Package: uataq
+Type: Package
+Title: UATAQ Lab R Utilities
+Version: 0.7.1
+Date: 2015-06-29
+Authors@R: person("Ben", "Fasoli", email = "benfasoli@gmail.com", role = c("aut", "cre"))
+Description: R utilities developed for use of the Utah Atmospheric Trace gas and Air Quality (UATAQ) lab at the University of Utah.
+License: GPL-2
+LazyData: TRUE
+Depends:
+  R (>= 3.0.0)
