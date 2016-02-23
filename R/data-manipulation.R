@@ -168,7 +168,7 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
 
 #' Find nearest neighbors
 #' 
-#' \code{findNeighbor} finds the closest value index in y for each x, 
+#' \code{find_neighbor} finds the closest value index in y for each x, 
 #'   using findInterval
 #'
 #' @param x desired values
@@ -205,12 +205,12 @@ na_interp <- function(y, x=NULL) {
 
 #' Running mean smoothing
 #' 
-#' \code{runSmooth} generates smoothed representation of x
+#' \code{run_smooth} generates smoothed representation of x
 #'
 #' @param x numeric values
 #' @param n number of points to smooth by
 #'                  
 #' @export
-runSmooth <- function(x, n=10) {
+run_smooth <- function(x, n=10) {
   return(stats::filter(x, rep(1 / n, n), sides=2))
 }

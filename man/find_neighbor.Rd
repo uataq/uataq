@@ -12,7 +12,7 @@ find_neighbor(x, y)
 \item{y}{table to search values}
 }
 \description{
-\code{findNeighbor} finds the closest value index in y for each x, 
+\code{find_neighbor} finds the closest value index in y for each x, 
   using findInterval
 }
 
