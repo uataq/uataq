@@ -18,7 +18,8 @@ sampling a known concentration}
 \item{auto}{if TRUE, stops calibration if the dataset ends with reference gas
 flow still active}
 
-\item{er_tol}{tolerated deviation from known value. e.g. 0.1 for 10%}
+\item{er_tol}{tolerated deviation from known value. e.g. 0.1 for 10 percent
+deviation from known}
 
 \item{dt_tol}{tolerated amount of time between observations, in seconds. If 
 exceeded, will remove all atmospheric data until the next 

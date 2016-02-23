@@ -36,7 +36,8 @@ breakstr <- function(strings, pattern=',', ncol=NULL) {
 #'               sampling a known concentration
 #' @param auto if TRUE, stops calibration if the dataset ends with reference gas
 #'               flow still active
-#' @param er_tol tolerated deviation from known value. e.g. 0.1 for 10%
+#' @param er_tol tolerated deviation from known value. e.g. 0.1 for 10 percent
+#'               deviation from known
 #' @param dt_tol tolerated amount of time between observations, in seconds. If 
 #'               exceeded, will remove all atmospheric data until the next 
 #'               calibration
