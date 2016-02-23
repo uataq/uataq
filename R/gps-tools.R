@@ -1,5 +1,6 @@
 #' Calculate GPS direction
-#'
+#' @export
+#' 
 #' \code{gps_dir} calculates the direction between GPS coordinates
 #'
 #' @param lat latitude, in dd.dddd
@@ -30,7 +31,8 @@ gps_dir <- function(lat, lon) {
 }
 
 #' Calculate GPS distances
-#'
+#' @export
+#' 
 #' \code{gps_distance} calculates the distances between GPS coordinates
 #'
 #' @param lat latitude, in dd.dddd
@@ -58,6 +60,7 @@ gps_distance  <- function(lat, lon, units='m') {
 }
 
 #' Calculate GPS speed
+#' @export
 #'
 #' \code{gps_speed} calculates the speed in m/s between GPS coordinates
 #'

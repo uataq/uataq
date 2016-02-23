@@ -1,5 +1,6 @@
 #' Split delimited strings
-#'
+#' @export
+#' 
 #' \code{breakstr} splits strings by the given delimiter and returns a
 #'   data_frame. Lines that do not fit the correct number of columns
 #'   are omitted.
@@ -25,7 +26,8 @@ breakstr <- function(strings, pattern=',', ncol=NULL) {
 }
 
 #' Calibrate trace gas data
-#'
+#' @export
+#' 
 #' \code{calibrate} atmospheric trace gas data against several reference gas 
 #'   tanks.
 #'   
@@ -163,7 +165,8 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
 }
 
 #' Find nearest neighbors
-#'
+#' @export
+#' 
 #' \code{findNeighbor} finds the closest value index in y for each x, 
 #'   using findInterval
 #'
@@ -179,7 +182,8 @@ find_neighbor <- function(x, y){
 }
 
 #' Linearly interpolate NA values
-#'
+#' @export
+#' 
 #' \code{na_interp} linearly interpolates NA values found in vector y with
 #'   respect to dimension x (e.g. timestamp).
 #'   
@@ -196,7 +200,8 @@ na_interp <- function(y, x=NULL) {
 }
 
 #' Running mean smoothing
-#'
+#' @export
+#' 
 #' \code{runSmooth} generates smoothed representation of x
 #'
 #' @param x numeric values

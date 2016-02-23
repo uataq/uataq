@@ -1,5 +1,6 @@
 #' RDS file conversion
-#'
+#' @export
+#' 
 #' \code{rds2csv} converts .rds files to ASCII tabular representation
 #'
 #' @param rds path to .rds file.
