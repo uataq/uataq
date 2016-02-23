@@ -1,10 +1,11 @@
 #' Calculate GPS direction
-#' @export
 #' 
 #' \code{gps_dir} calculates the direction between GPS coordinates
 #'
 #' @param lat latitude, in dd.dddd
 #' @param lon longitude, in dd.dddd
+#'                  
+#' @export
 gps_dir <- function(lat, lon) {
   # 0 degrees = north, increasing to the east.
   if (length(lon)!=length(lat)) stop('Error: GPS input of different lengths.')
@@ -31,13 +32,14 @@ gps_dir <- function(lat, lon) {
 }
 
 #' Calculate GPS distances
-#' @export
 #' 
 #' \code{gps_distance} calculates the distances between GPS coordinates
 #'
 #' @param lat latitude, in dd.dddd
 #' @param lon longitude, in dd.dddd
 #' @param units output units, either 'm' or 'rad'
+#'                  
+#' @export
 gps_distance  <- function(lat, lon, units='m') {
   if (length(lon)!=length(lat)) stop('Error: GPS input of different lengths.')
   len <- length(lat)
@@ -60,13 +62,14 @@ gps_distance  <- function(lat, lon, units='m') {
 }
 
 #' Calculate GPS speed
-#' @export
 #'
 #' \code{gps_speed} calculates the speed in m/s between GPS coordinates
 #'
 #' @param Time POSIXct times for observations
 #' @param lat latitude, in dd.dddd
 #' @param lon longitude, in dd.dddd
+#'                  
+#' @export
 gps_speed <- function(Time, lat, lon) {
   if (length(Time)!=length(lat) | length(Time)!=length(lon)) stop('Error: GPS input of different lengths.')
   len <- length(Time)

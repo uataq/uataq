@@ -1,5 +1,4 @@
 #' RDS file conversion
-#' @export
 #' 
 #' \code{rds2csv} converts .rds files to ASCII tabular representation
 #'
@@ -8,6 +7,8 @@
 #'   for writing. '' indicates output to the console.
 #' @param sep the field separator string.
 #' @param ... arguments passed to readr::write_delim
+#'                  
+#' @export
 rds2csv <- function(rds, file, sep=',', ...) {
   if(!require(readr))
     stop("Package 'readr' required. Run:  install.packages('readr')")

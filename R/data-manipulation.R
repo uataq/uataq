@@ -1,5 +1,4 @@
 #' Split delimited strings
-#' @export
 #' 
 #' \code{breakstr} splits strings by the given delimiter and returns a
 #'   data_frame. Lines that do not fit the correct number of columns
@@ -9,6 +8,8 @@
 #' @param pattern delimiter at which to split strings
 #' @param ncol    number of columns. NULL will determine by the median number
 #'                  of columns found in strings
+#'                  
+#' @export
 breakstr <- function(strings, pattern=',', ncol=NULL) {
   if(!require(dplyr))
     stop("Package 'dplyr' required. Run:  install.packages('dplyr')")
@@ -26,7 +27,6 @@ breakstr <- function(strings, pattern=',', ncol=NULL) {
 }
 
 #' Calibrate trace gas data
-#' @export
 #' 
 #' \code{calibrate} atmospheric trace gas data against several reference gas 
 #'   tanks.
@@ -43,6 +43,8 @@ breakstr <- function(strings, pattern=',', ncol=NULL) {
 #' @param dt_tol tolerated amount of time between observations, in seconds. If 
 #'               exceeded, will remove all atmospheric data until the next 
 #'               calibration
+#'                  
+#' @export
 calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
 {
   if(!require(dplyr))
@@ -165,13 +167,14 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
 }
 
 #' Find nearest neighbors
-#' @export
 #' 
 #' \code{findNeighbor} finds the closest value index in y for each x, 
 #'   using findInterval
 #'
 #' @param x desired values
 #' @param y table to search values
+#'                  
+#' @export
 find_neighbor <- function(x, y){
   x <- as.numeric(x)
   y <- as.numeric(y)
@@ -182,13 +185,14 @@ find_neighbor <- function(x, y){
 }
 
 #' Linearly interpolate NA values
-#' @export
 #' 
 #' \code{na_interp} linearly interpolates NA values found in vector y with
 #'   respect to dimension x (e.g. timestamp).
 #'   
 #' @param y numeric vector in which to fill bracketed NA values
 #' @param x vector giving dimension of y. NULL if y is equally spaced
+#'                  
+#' @export
 na_interp <- function(y, x=NULL) {
   if(is.null(x)) x <- 1:length(y)
   nona  <- which(!is.na(y))
@@ -200,12 +204,13 @@ na_interp <- function(y, x=NULL) {
 }
 
 #' Running mean smoothing
-#' @export
 #' 
 #' \code{runSmooth} generates smoothed representation of x
 #'
 #' @param x numeric values
 #' @param n number of points to smooth by
+#'                  
+#' @export
 runSmooth <- function(x, n=10) {
   return(stats::filter(x, rep(1 / n, n), sides=2))
 }
