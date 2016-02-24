@@ -18,9 +18,7 @@ breakstr <- function(strings, pattern=',', ncol=NULL) {
   ndelim <- stringr::str_count(strings, pattern)
   if(is.null(ncol)) ncol <- median(ndelim, na.rm=T) + 1
   split <- subset(strings, ndelim == (ncol-1)) %>%
-    strsplit(pattern, fixed=T) %>%
-    unlist() %>%
-    matrix(ncol=ncol, byrow=T) %>%
+    stringr::str_split_fixed(pattern, n=ncol) %>%
     as.data.frame(stringsAsFactors=F) %>%
     as_data_frame()
   return(split)
