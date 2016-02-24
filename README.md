@@ -1,5 +1,5 @@
 # Installation
-Package can be downloaded using `devtools`.
+Package can be installed using `devtools`.
 ```
 if (!require('devtools')) install.packages('devtools')
 devtools::install_github(‘benfasoli/uataq’)
