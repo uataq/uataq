@@ -10,7 +10,7 @@ devtools::install_github('benfasoli/uataq')
 1. `breakstr` splits strings by the given delimiter and returns a data_frame. Lines that do not fit the correct number of columns are omitted.
 2. `calibrate` applies an algorithm for calibrating atmospheric trace gas data by linearly interpolating several reference gas tanks.
 3. `find_neighbor` finds the closest value index in y for each x, using findInterval.
-4. `iggplot` generates an interactive gadget for a given ggplot object and adds this functionality as a RStudio Addin.
+4. `iggplot` generates an interactive gadget for a given ggplot object.
 5. `gps_dir` calculates the direction between GPS coordinates.
 6. `gps_distance` calculates the distances between GPS coordinates.
 7. `gps_speed` calculates the speed in m/s between GPS coordinates.
