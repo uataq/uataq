@@ -2,7 +2,7 @@
 Package can be installed using `devtools`.
 ```
 if (!require('devtools')) install.packages('devtools')
-devtools::install_github("benfasoli/uataq"")
+devtools::install_github('benfasoli/uataq')
 ```
 
 # Included Functions
