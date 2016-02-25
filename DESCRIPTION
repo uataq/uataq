@@ -10,6 +10,9 @@ License: GPL-2
 LazyData: TRUE
 Imports:
     dplyr,
+    ggplot2,
+    miniUI,
     readr,
+    shiny,
     stringr
 RoxygenNote: 5.0.1

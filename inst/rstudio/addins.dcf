@@ -1,0 +1,4 @@
+Name: View ggplot
+Description: Interact with a given ggplot object.
+Binding: iggplot
+Interactive: true
