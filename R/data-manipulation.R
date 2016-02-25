@@ -196,6 +196,7 @@ na_interp <- function(y, x=NULL) {
   nona  <- which(!is.na(y))
   start <- head(nona, 1)
   end   <- tail(nona, 1)
+  if(length(end - start) < 2) return(y)
   ysub  <- y[start:end]
   y[start:end] <- approx(x[start:end], ysub, n=length(ysub), method='linear')$y
   y
