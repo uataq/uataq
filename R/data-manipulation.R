@@ -11,10 +11,8 @@
 #'                  
 #' @export
 breakstr <- function(strings, pattern=',', ncol=NULL) {
-  if(!require(dplyr))
-    stop("Package 'dplyr' required. Run:  install.packages('dplyr')")
-  if(!require(stringr))
-    stop("Package 'stringr' required. Run:  install.packages('stringr')")
+  require(dplyr)
+  require(stringr)
   ndelim <- stringr::str_count(strings, pattern)
   if(is.null(ncol)) ncol <- median(ndelim, na.rm=T) + 1
   split <- subset(strings, ndelim == (ncol-1)) %>%
@@ -45,8 +43,7 @@ breakstr <- function(strings, pattern=',', ncol=NULL) {
 #' @export
 calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
 {
-  if(!require(dplyr))
-    stop("Package 'dplyr' required. Run:  install.packages('dplyr')")
+  require(dplyr)
   
   # Input error checking ------------------------------------------------------
   data <- data_frame(time, gasm, gask) %>%

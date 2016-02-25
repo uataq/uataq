@@ -10,8 +10,7 @@
 #'                  
 #' @export
 rds2csv <- function(rds, file, sep=',', ...) {
-  if(!require(readr))
-    stop("Package 'readr' required. Run:  install.packages('readr')")
+  require(readr)
   rd <- readRDS(rds)
   readr::write_delim(rd, file, delim=sep, ...)
 }
