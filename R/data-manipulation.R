@@ -213,8 +213,8 @@ run_smooth <- function(x, n=10) {
 
 #' Keeling isotope analysis
 #' 
-#' \code{keeling} performs isotope analysis, generating a linear fit
-#'   and standard d13C keeling plot.
+#' \code{keeling} performs keeling isotope analysis, generating a linear fit
+#'   and d13C keeling plot.
 #'
 #' @param co2 numeric co2 concentrations, in ppm
 #' @param d13c numeric d13C, in per mille
