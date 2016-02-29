@@ -103,16 +103,7 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   # Linear interpolation of measured reference --------------------------------
   # Linearly interpolate each gas in stdm over atmospheric sampling periods
   # when the standard is not being measured.
-  na_interp <- function(y, x) {
-    nona  <- which(!is.na(y))
-    start <- head(nona, 1)
-    end   <- tail(nona, 1)
-    ysub  <- y[start:end]
-    y[start:end] <- approx(x[start:end], ysub, n=length(ysub), method='linear')$y
-    y
-  }
-  
-  stdm <- apply(stdm, 2, na_interp, x=data$time)
+  stdm <- apply(stdm, 2, uataq::na_interp, x=data$time)
   
   # Generate calibration coefficients -----------------------------------------
   # Identify the number of references used to calibrate each observation and
