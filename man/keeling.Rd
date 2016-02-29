@@ -20,7 +20,7 @@ list containing (1) \code{$fit} the linear fit object and (2)
   \code{$fig} the ggplot figure.
 }
 \description{
-\code{keeling} performs isotope analysis, generating a linear fit
-  and standard d13C keeling plot.
+\code{keeling} performs keeling isotope analysis, generating a linear fit
+  and d13C keeling plot.
 }
 
