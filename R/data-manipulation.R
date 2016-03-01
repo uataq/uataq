@@ -8,7 +8,7 @@
 #' @param pattern delimiter at which to split strings
 #' @param ncol    number of columns. NULL will determine by the median number
 #'                  of columns found in strings
-#'                  
+#' 
 #' @export
 breakstr <- function(strings, pattern=',', ncol=NULL) {
   require(dplyr)
@@ -184,10 +184,10 @@ na_interp <- function(y, x=NULL) {
   nona  <- which(!is.na(y))
   start <- head(nona, 1)
   end   <- tail(nona, 1)
-  if(length(end - start) < 2) return(y)
+  if(length(end - start) < 1) return(y)
   ysub  <- y[start:end]
   y[start:end] <- approx(x[start:end], ysub, n=length(ysub), method='linear')$y
-  y
+  return(y)
 }
 
 #' Running mean smoothing
