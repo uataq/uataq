@@ -24,7 +24,7 @@ iggplot <- function(fig) {
   # Generate Plot UI ----------------------------------------------------------
   ui <- miniPage(
     gadgetTitleBar('Drag and double click to zoom', left=NULL),
-    plotOutput('plot', height='100%',
+    plotOutput('plot', height='95%',
                dblclick='plot_dblclick',
                hover=hoverOpts('plot_hover', 
                                delay=100, delayType='debounce'),
