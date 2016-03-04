@@ -12,7 +12,7 @@
 archive <- function(df, tz='UTC', path='%Y-%m.dat')
 {
   require(dplyr)
-  requrie(readr)
+  require(readr)
   
   time_col <- grep('time', names(df), ignore.case=T, value=T)
   
@@ -35,7 +35,7 @@ archive <- function(df, tz='UTC', path='%Y-%m.dat')
         df_list[[i]] <- df_list[[i]] %>%
           filter(Time_temp > t_start) %>%
           mutate(Time_temp = format(Time_temp, tz=tz)) %>%
-          rename_(.dots=setNames(Time_temp, paste0('Time_', tz)))
+          rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
         
         readr::write_csv(df_list[[i]], file[[i]], append=T)
       } else {
