@@ -1,3 +1,47 @@
+#' Slice data_frame into files
+#' 
+#' \code{archive} splits data_frame by time specified in the \code{path}
+#'   argument and saves to files.
+#'   
+#' @param df data_frame to save. Must contain a column named 'time'
+#' @param tz timezone of POSIXct timestamp in df
+#' @param path file naming scheme used to split and save data. Format must be
+#'   compatible with \code{strptime}
+#' 
+#' @export
+archive <- function(df, tz='UTC', path='%Y-%m.dat')
+{
+  require(dplyr)
+  
+  time_col <- grep('time', names(df), ignore.case=T, value=T)
+  
+  grp <- d %>%
+    rename_(.dots=setNames(time_col, 'Time_temp')) %>%
+    filter(Time_temp > t_start) %>%
+    arrange(Time_temp) %>%
+    group_by(file = format(Time_temp, tz=tz, format=path)) %>%
+    mutate(Time_temp = format(Time_temp, tz=tz)) %>%
+    rename_(.dots=setNames(Time_temp, paste0('Time_', tz))) %>%
+    do(df_list = data.frame(.) %>% 
+         select(-file))
+  
+  with(grp, {
+    for (i in 1:length(file)) {
+      if(file.exists(file[[i]])){
+        t_start <- system(paste0('tail -n 1 ', file[[i]]), intern=T) %>%
+          uataq::breakstr() %>%
+          select(1) %>%
+          as.character() %>%
+          as.POSIXct(tz='UTC', format='%Y-%m-%d %H:%M:%S')
+        df_list[[i]] <- df_list[[i]] %>% filter(Time_UTC > t_start)
+        readr::write_csv(df_list[[i]], file[[i]], append=T)
+      } else {
+        readr::write_csv(df_list[[i]], file[[i]], append=F)
+      }
+    }
+  })
+}
+
 #' Split delimited strings
 #' 
 #' \code{breakstr} splits strings by the given delimiter and returns a
@@ -187,7 +231,7 @@ keeling <- function(co2, d13c, bg_co2=400, bg_d13c=-8)
                         signif(coef(fit)[2], 5),
                         '~ frac(1, CO[2]) ~',
                         signif(coef(fit)[1], 5),
-                        ', R^2 ~ "=" ~ ', 
+                        ', R^2 ~ "=" ~ ',
                         signif(summary(fit)$r.squared, 4), ')'))
   fig <- ggplot(df, aes(x = co2_inv, y = d13c)) + 
     geom_point() +
