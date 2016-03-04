@@ -17,11 +17,8 @@ archive <- function(df, tz='UTC', path='%Y-%m.dat')
   
   grp <- d %>%
     rename_(.dots=setNames(time_col, 'Time_temp')) %>%
-    filter(Time_temp > t_start) %>%
     arrange(Time_temp) %>%
     group_by(file = format(Time_temp, tz=tz, format=path)) %>%
-    mutate(Time_temp = format(Time_temp, tz=tz)) %>%
-    rename_(.dots=setNames(Time_temp, paste0('Time_', tz))) %>%
     do(df_list = data.frame(.) %>% 
          select(-file))
   
@@ -33,9 +30,18 @@ archive <- function(df, tz='UTC', path='%Y-%m.dat')
           select(1) %>%
           as.character() %>%
           as.POSIXct(tz='UTC', format='%Y-%m-%d %H:%M:%S')
-        df_list[[i]] <- df_list[[i]] %>% filter(Time_UTC > t_start)
+        
+        df_list[[i]] <- df_list[[i]] %>%
+          filter(Time_temp > t_start) %>%
+          mutate(Time_temp = format(Time_temp, tz=tz)) %>%
+          rename_(.dots=setNames(Time_temp, paste0('Time_', tz)))
+        
         readr::write_csv(df_list[[i]], file[[i]], append=T)
       } else {
+        df_list[[i]] <- df_list[[i]] %>%
+          mutate(Time_temp = format(Time_temp, tz=tz)) %>%
+          rename_(.dots=setNames(Time_temp, paste0('Time_', tz)))
+        
         readr::write_csv(df_list[[i]], file[[i]], append=F)
       }
     }
