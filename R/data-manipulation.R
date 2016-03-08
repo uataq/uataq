@@ -222,6 +222,7 @@ keeling <- function(co2, d13c, bg_co2=400, bg_d13c=-8)
   require(dplyr)
   require(ggplot2)
   
+  bg_co2_inv  <- 1 / bg_co2
   bg_d13c_inv <- 1 / bg_d13c
   
   df <- data_frame(co2, 
@@ -242,6 +243,7 @@ keeling <- function(co2, d13c, bg_co2=400, bg_d13c=-8)
                         signif(summary(fit)$r.squared, 4), ')'))
   fig <- ggplot(df, aes(x = co2_inv, y = d13c)) + 
     geom_point() +
+    geom_point(x=bg_co2_inv, y=bg_d13c, color='orange', size=3, shape=3) +
     geom_abline(slope=coef(fit)[2], 
                 intercept=coef(fit)[1], 
                 color='darkorange') +
