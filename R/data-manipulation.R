@@ -16,7 +16,7 @@ archive <- function(df, tz='UTC', path='%Y-%m.dat')
   
   time_col <- grep('time', names(df), ignore.case=T, value=T)
   
-  grp <- d %>%
+  grp <- df %>%
     rename_(.dots=setNames(time_col, 'Time_temp')) %>%
     arrange(Time_temp) %>%
     group_by(file = format(Time_temp, tz=tz, format=path)) %>%
