@@ -258,7 +258,8 @@ keeling <- function(co2, d13c, bg_co2=400, bg_d13c=-8)
 #' Find nearest neighbors
 #' 
 #' \code{find_neighbor} finds the closest value index in y for each x, 
-#'   using findInterval
+#'   using findInterval. Returns the index to be applied to y that most
+#'   closely matches x.
 #'
 #' @param x desired values
 #' @param y table to search values
