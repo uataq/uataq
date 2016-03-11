@@ -1,82 +1,23 @@
-#' Calculate GPS direction
-#' 
-#' \code{gps_dir} calculates the direction between GPS coordinates
+#' Calculate GPS speed, distance, and direction
 #'
-#' @param lat latitude, in dd.dddd
-#' @param lon longitude, in dd.dddd
-#'                  
-#' @export
-gps_dir <- function(lat, lon) {
-  # 0 degrees = north, increasing to the east.
-  if (length(lon)!=length(lat)) stop('Error: GPS input of different lengths.')
-  len <- length(lat)
-  
-  earth.radius <- 6.371 * 10^6 # m
-  
-  # Convert degrees to radians
-  latrad <- lat * pi/180 # rad
-  lonrad <- lon * pi/180 # rad
-  
-  dlat <- latrad[2:len] - latrad[1:(len-1)]
-  dlon <- lonrad[2:len] - lonrad[1:(len-1)]
-  
-  y <- sin(dlon) * cos(latrad[2:len])
-  x <- cos(latrad[1:(len-1)]) * sin(latrad[2:len]) - 
-    sin(latrad[1:(len-1)]) * cos(latrad[2:len]) * cos(dlon)
-  
-  dir <- atan2(y, x) * 180/ pi
-  dir <- (dir + 360) %% 360
-  dir <- c(NA, dir)
-  
-  return(dir)
-}
-
-#' Calculate GPS distances
-#' 
-#' \code{gps_distance} calculates the distances between GPS coordinates
-#'
-#' @param lat latitude, in dd.dddd
-#' @param lon longitude, in dd.dddd
-#' @param units output units, either 'm' or 'rad'
-#'                  
-#' @export
-gps_distance  <- function(lat, lon, units='m') {
-  if (length(lon)!=length(lat)) stop('Error: GPS input of different lengths.')
-  len <- length(lat)
-  
-  earth.radius <- 6.371 * 10^6 # m
-  
-  # Convert degrees to radians
-  latrad <- lat * pi/180 # rad
-  lonrad <- lon * pi/180 # rad
-  
-  dlat <- latrad[2:len] - latrad[1:(len-1)]
-  dlon <- lonrad[2:len] - lonrad[1:(len-1)]
-  
-  a <- sin(dlat / 2)^2 + sin(dlon / 2)^2 * cos(latrad[1:(len-1)]) * cos(latrad[2:len])
-  c <- 2 * atan2(sqrt(a), sqrt(1-a))
-  d <- c(NA, c)
-  
-  if (units=='m') return(d * earth.radius)
-  else if (units=='rad') return (d)
-}
-
-#' Calculate GPS speed
-#'
-#' \code{gps_speed} calculates the speed in m/s between GPS coordinates
+#' \code{gps_move} calculates the speeds, distances, and directions given
+#'   vectors of GPS coordinates
 #'
 #' @param Time POSIXct times for observations
 #' @param lat latitude, in dd.dddd
 #' @param lon longitude, in dd.dddd
-#'                  
+#' 
+#' @return list containing (1) \code{$speed} at each point, (2)
+#'   \code{$distance} from the previous point, and (3) \code{$direction}
+#'   the direction of movement in degrees.
+#'   
 #' @export
-gps_speed <- function(Time, lat, lon) {
-  if (length(Time)!=length(lat) | length(Time)!=length(lon)) stop('Error: GPS input of different lengths.')
+gps_move <- function(Time, lat, lon) {
+  if (length(Time)!=length(lat) | length(Time)!=length(lon))
+    stop('Error: GPS input of different lengths.')
   len <- length(Time)
   
-  earth.radius <- 6.371 * 10^6 # m
-  
-  # Convert degrees to radians
+  earth_radius <- 6.371 * 10^6 # m
   latrad <- lat * pi/180 # rad
   lonrad <- lon * pi/180 # rad
   
@@ -84,10 +25,24 @@ gps_speed <- function(Time, lat, lon) {
   dlon <- lonrad[2:len] - lonrad[1:(len-1)]
   dt   <- as.numeric(Time[2:len] - Time[1:(len-1)])
   
-  a <- sin(dlat / 2)^2 + sin(dlon / 2)^2 * cos(latrad[1:(len-1)]) * cos(latrad[2:len])
+  # Direction calculations ----------------------------------------------------
+  y <- sin(dlon) * cos(latrad[2:len])
+  x <- cos(latrad[1:(len-1)]) * sin(latrad[2:len]) - 
+    sin(latrad[1:(len-1)]) * cos(latrad[2:len]) * cos(dlon)
+  dir <- atan2(y, x) * 180/ pi
+  dir <- (dir + 360) %% 360
+  dir <- c(NA, dir)
+  
+  # Speed and distance calculations -------------------------------------------
+  a <- sin(dlat / 2)^2 + sin(dlon / 2)^2 * 
+    cos(latrad[1:(len-1)]) * cos(latrad[2:len])
   c <- 2 * atan2(sqrt(a), sqrt(1-a))
-  d <- c(NA, earth.radius * c)
+  d_rad <- c(NA, c)
+  d_m   <- d_rad * earth_radius
   
   v <- d / c(NA, dt) # m/s
-  return(v)
+  return(list(speed     = v,
+              distance  = list(rad = d_rad,
+                              m   = d_m),
+              direction = dir))
 }

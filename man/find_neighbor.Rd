@@ -13,6 +13,7 @@ find_neighbor(x, y)
 }
 \description{
 \code{find_neighbor} finds the closest value index in y for each x, 
-  using findInterval
+  using findInterval. Returns the index to be applied to y that most
+  closely matches x.
 }
 
