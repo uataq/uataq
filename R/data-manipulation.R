@@ -155,13 +155,10 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
     filter(flag == -10) %>%
     select(-flag)
   
-  # Remove data where slope correction falls outside of the slp_tol range.
-  # out$cal[out$m > slp_range[2] | out$m < slp_range[1]] <- NA
-  
-  # Trim trailing NA values which are not bracketed by two calibrations.
-  idx1 <- head(which(out$n > 0), 1)
-  idx2 <- tail(which(out$n > 0), 1)
-  out <- out[idx1:idx2, ]
+  # Trim NA values which are not bracketed by two calibrations.
+  # idx1 <- head(which(out$n > 0), 1)
+  # idx2 <- tail(which(out$n > 0), 1)
+  # out <- out[idx1:idx2, ]
   return(out)
 }
 
