@@ -57,7 +57,19 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   
   # Populate known and measured data matrices ---------------------------------
   std_uniq <- unique(subset(data, gask != -10)$gask)
-  if (length(std_uniq) < 1) stop('No standard periods found.')
+  if (length(std_uniq) < 1) {
+    out <- data_frame(time = data$time,
+                      cal  = NA,
+                      raw  = data$gasm,
+                      m    = NA,
+                      b    = NA,
+                      n    = 0,
+                      r_sq = NA,
+                      flag = data$gask) %>%
+      filter(flag == -10) %>%
+      select(-flag)
+    return(out)
+  }
   
   n_std <- length(std_uniq)
   n_obs <- nrow(data)
