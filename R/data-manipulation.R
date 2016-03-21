@@ -130,9 +130,9 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   
   xsum  <- rowSums(x, na.rm=T)
   ysum  <- rowSums(y, na.rm=T)
-  xysum <- rowSums(x * y)
-  x2sum <- rowSums(x^2)
-  y2sum <- rowSums(y^2)
+  xysum <- rowSums(x * y, na.rm=T)
+  x2sum <- rowSums(x^2, na.rm=T)
+  y2sum <- rowSums(y^2, na.rm=T)
   
   m <- (n_cal * xysum - xsum * ysum) / (n_cal * x2sum - xsum * xsum)
   b <- (x2sum * ysum - xsum * xysum) / (n_cal * x2sum - xsum * xsum)
