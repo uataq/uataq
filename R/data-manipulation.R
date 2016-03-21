@@ -46,7 +46,7 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   require(dplyr)
   
   # Input error checking ------------------------------------------------------
-  data <- data_frame(time, gasm, gask) %>%
+  data <- data_frame(time, gasm=as.numeric(gasm), gask=as.numeric(gask)) %>%
     arrange(time) %>%
     filter(!(gask %in% c(-1, -2, -3, -99, 0))) %>%
     mutate(dt = c(NA, time[2:n()] - time[1:(n()-1)]))
