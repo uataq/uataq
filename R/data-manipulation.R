@@ -117,6 +117,7 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   # Linearly interpolate each gas in stdm over atmospheric sampling periods
   # when the standard is not being measured.
   stdm <- apply(stdm, 2, uataq::na_interp, x=data$time)
+  stdk[is.na(stdm)] <- NA
   
   # Generate calibration coefficients -----------------------------------------
   # Identify the number of references used to calibrate each observation and
@@ -137,6 +138,11 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   b <- (x2sum * ysum - xsum * xysum) / (n_cal * x2sum - xsum * xsum)
   r_squared <- (n_cal * xysum - xsum * ysum)^2 /
     ((n_cal * x2sum - xsum * xsum) * (n_cal * y2sum - ysum * ysum))
+  
+  # For periods with no calibration gases, set slope and intercep to NA
+  n0 <- n_cal == 0
+  m[n0] <- NA
+  b[n0] <- NA
   
   # For periods with only a single calibration gas, assume that the instrument
   # is perfectly linear through zero and make only a slope correction.
