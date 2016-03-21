@@ -82,7 +82,7 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   # of known concentrations, NA for atmosphere, and numeric values representing
   # the measured concentrations of the reference gas.
   stdm <- matrix(data$gasm, nrow=n_obs, ncol=n_std)
-  stdm[stdk != std_flag] <- NA
+  stdm[stdk != std_flag | is.na(std_flag)] <- NA
   stdm[abs(stdm - stdk) / stdk > er_tol] <- NA
   
   # Run length encoding -------------------------------------------------------
