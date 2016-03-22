@@ -11,6 +11,7 @@
 #' @export
 archive <- function(df, tz='UTC', path='%Y_%m.dat')
 {
+  if (nrow(df) < 1) stop('No data to append.')
   require(dplyr)
   require(readr)
   
