@@ -122,11 +122,7 @@ r_squared <- (n_cal * xysum - xsum * ysum)^2 /
 # For periods with only a single calibration gas, assume that the instrument
 # is perfectly linear through zero and make only a slope correction.
 n1 <- n_cal == 1
-if (ncol(x) < 2) {
-  m[n1] <- x[n1, ] / y[n1,]
-} else {
-  m[n1] <- rowSums(x[n1, ], na.rm=T) / rowSums(y[n1,], na.rm=T)
-}
+m[n1] <- x[n1, ] / y[n1,]
 b[n1] <- 0
 
 out <- data_frame(time = data$time,
