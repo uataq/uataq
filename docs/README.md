@@ -4,15 +4,25 @@ Calibration Documentation
 
 This document outlines the workflow used in the UATAQ trace gas calibration algorithm written in R and is included with other data manipulation and trace gas analysis tools found in the [uataq R package](https://github.com/benfasoli/uataq). The raw source code can be found [here](https://github.com/benfasoli/uataq/blob/master/R/data-manipulation.R#L25-L173).
 
-Typically, UATAQ sites are calibrated every two to three hours with three reference gases. The measurement of the reference gas is linearly interpolated during bracketed periods when sampling from other sources. For managing tolerances, see the [Optional Inputs](#Optionalinputs) section.
+Typically, UATAQ sites are calibrated every two hours using three reference gases. The measurement of the reference gas is linearly interpolated during bracketed periods when sampling from other sources. For managing tolerances, see the Optional Inputs section.
+
+Example
+=======
+
+Data from the Logan, UT CO2 site was calibrated during January, 2015. The sample below shows the raw measurements for the atmosphere (red), the three standard gases interpolated over time (yellow, green, blue), and the corrected concentrations (purple). The dotted lines represent the known values of each standard. It is evident that the instrument was reading ~13ppm higher than the known values. The corrected concentrations are produced by generating a linear slope and intercept from the positions of the interpolated standards (yellow, green, blue lines) for each atmospheric data point.
+
+![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)<!-- -->
 
 Required inputs
 ---------------
 
-To calibrate atmospheric observations, three vectors of matching length *n* are required:
-1. gasm - measured concentrations (numeric). These are the concentrations that the instrument reports over time.
-2. gask - known concentration flag (numeric). This informs the algorithm *what* is being measured at any point of time. We define atmospheric observations with a numeric value of -10, periods during which the optical cavity is being flushed with -99, and periods when sampling reference values with the known concentration.
-3. time - timestamps (POSIXct). To be preserved in the calibrated dataset.
+To calibrate atmospheric observations, three vectors of matching length are required:
+
+1.  gasm - measured concentrations (numeric). These are the concentrations that the instrument reports over time.
+
+2.  gask - known concentration flag (numeric). This informs the algorithm *what* is being measured at any point of time. We define atmospheric observations with a numeric value of -10, periods during which the optical cavity is being flushed with -99, and periods when sampling reference values with the known concentration.
+
+3.  time - timestamps (POSIXct). To be preserved in the calibrated dataset.
 
 ### Example input
 
@@ -138,10 +148,3 @@ out <- data_frame(time = data$time,
   filter(flag == -10) %>%
   select(-flag)
 ```
-
-Example
-=======
-
-Data from the Logan, UT CO\(_2\) site was calibrated during January, 2015. The sample below shows the raw measurements for the atmosphere (red), the three standard gases interpolated over time (yellow, green, blue), and the corrected concentrations (purple). The dotted lines represent the known values of each standard. It is evident that the instrument was reading ~13ppm higher than the known values. The corrected concentrations are produced by generating a linear slope and intercept from the positions of the interpolated standards (yellow, green, blue lines) for each atmospheric data point.
-
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)<!-- -->
