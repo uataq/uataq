@@ -26,20 +26,18 @@ To calibrate atmospheric observations, three vectors of matching length are requ
 
 ### Example input
 
-    ## Source: local data frame [10 x 3]
-    ## 
-    ##                   time  gasm  gask
-    ##                 (time) (dbl) (dbl)
-    ## 1  2016-01-12 23:00:00   400   -10
-    ## 2  2016-01-12 23:00:01   402   -10
-    ## 3  2016-01-12 23:00:02   435   -99
-    ## 4  2016-01-12 23:00:03   473   -99
-    ## 5  2016-01-12 23:00:04   499   500
-    ## 6  2016-01-12 23:00:05   501   500
-    ## 7  2016-01-12 23:00:06   468   -99
-    ## 8  2016-01-12 23:00:07   422   -99
-    ## 9  2016-01-12 23:00:08   405   -10
-    ## 10 2016-01-12 23:00:09   404   -10
+                       time  gasm  gask
+                     (time) (dbl) (dbl)
+     1  2016-01-12 23:00:00   400   -10
+     2  2016-01-12 23:00:01   402   -10
+     3  2016-01-12 23:00:02   435   -99
+     4  2016-01-12 23:00:03   473   -99
+     5  2016-01-12 23:00:04   499   500
+     6  2016-01-12 23:00:05   501   500
+     7  2016-01-12 23:00:06   468   -99
+     8  2016-01-12 23:00:07   422   -99
+     9  2016-01-12 23:00:08   405   -10
+     10 2016-01-12 23:00:09   404   -10
 
 Optional inputs
 ---------------
@@ -103,7 +101,7 @@ stdm <- apply(stdm, 2, uataq::na_interp, x=data$time)
 stdk[is.na(stdm)] <- NA
 ```
 
-OSL Regression
+OLS Regression
 --------------
 
 Ordinary least squrared regression is then applied to the interpolated reference values during the atmospheric sampling periods to generate a linear slope and intercept. These are then used to correct the uncalibrated value and are returned along with the calibrated data, raw data, timestamp, and fit statistics.

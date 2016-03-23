@@ -97,7 +97,7 @@ stdm <- apply(stdm, 2, uataq::na_interp, x=data$time)
 stdk[is.na(stdm)] <- NA
 ```
 
-## OSL Regression
+## OLS Regression
 Ordinary least squrared regression is then applied to the interpolated reference values during the atmospheric sampling periods to generate a linear slope and intercept. These are then used to correct the uncalibrated value and are returned along with the calibrated data, raw data, timestamp, and fit statistics.
 
 ```{r, eval=F}
