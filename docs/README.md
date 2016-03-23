@@ -1,6 +1,6 @@
 
-Introduction
-============
+Calibration Documentation
+=========================
 
 This document outlines the workflow used in the UATAQ trace gas calibration algorithm written in R and is included with other data manipulation and trace gas analysis tools found in the [uataq R package](https://github.com/benfasoli/uataq). The raw source code can be found [here](https://github.com/benfasoli/uataq/blob/master/R/data-manipulation.R#L25-L173).
 
@@ -138,5 +138,10 @@ out <- data_frame(time = data$time,
   filter(flag == -10) %>%
   select(-flag)
 ```
+
+Example
+=======
+
+Data from the Logan, UT CO\(_2\) site was calibrated during January, 2015. The sample below shows the raw measurements for the atmosphere (red), the three standard gases interpolated over time (yellow, green, blue), and the corrected concentrations (purple). The dotted lines represent the known values of each standard. It is evident that the instrument was reading ~13ppm higher than the known values. The corrected concentrations are produced by generating a linear slope and intercept from the positions of the interpolated standards (yellow, green, blue lines) for each atmospheric data point.
 
 ![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)<!-- -->
