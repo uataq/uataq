@@ -11,7 +11,7 @@ Example
 
 Data from the Logan, UT CO2 site was calibrated during January, 2015. The sample below shows the raw measurements for the atmosphere (red), the three standard gases interpolated over time (yellow, green, blue), and the corrected concentrations (purple). The dotted lines represent the known values of each standard. It is evident that the instrument was reading ~13ppm higher than the known values. The corrected concentrations are produced by generating a linear slope and intercept from the positions of the interpolated standards (yellow, green, blue lines) for each atmospheric data point.
 
-![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)
 
 Required inputs
 ---------------
