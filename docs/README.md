@@ -9,9 +9,9 @@ Typically, UATAQ sites are calibrated every two hours using three reference gase
 Example
 =======
 
-Data from the Logan, UT CO2 site was calibrated during January, 2015. The sample below shows the raw measurements for the atmosphere (red), the three standard gases interpolated over time (yellow, green, blue), and the corrected concentrations (purple). The dotted lines represent the known values of each standard. It is evident that the instrument was reading ~13ppm higher than the known values. The corrected concentrations are produced by generating a linear slope and intercept from the positions of the interpolated standards (yellow, green, blue lines) for each atmospheric data point.
-
 ![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)
+
+Data from the Logan, UT CO2 site was calibrated during January, 2015. The sample below shows the raw measurements for the atmosphere (red), the three standard gases interpolated over time (yellow, green, blue), and the corrected concentrations (purple). The dotted lines represent the known values of each standard. It is evident that the instrument was reading ~13ppm higher than the known values. The corrected concentrations are produced by generating a linear slope and intercept from the positions of the interpolated standards (yellow, green, blue lines) for each atmospheric data point.
 
 Required inputs
 ---------------
@@ -94,7 +94,7 @@ stdk[is.na(stdm)] <- NA
 Interpolation of references
 ---------------------------
 
-Each standard is linearly interpolated to represent the drift in the averaged measuremed standards over time. Details about the implementation of the linear interpolation can be found [here](https://github.com/benfasoli/uataq/blob/master/R/data-manipulation.R#L246-L264).
+Each standard is linearly interpolated to represent the drift in the averaged measuremed standards over time. Source code for the implementation of the linear interpolation can be found [here](https://github.com/benfasoli/uataq/blob/master/R/data-manipulation.R#L246-L264).
 
 ``` r
 # Linearly interpolate each gas in stdm over atmospheric sampling periods
