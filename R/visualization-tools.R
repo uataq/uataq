@@ -24,6 +24,10 @@ iggplot <- function(fig) {
   # Generate Plot UI ----------------------------------------------------------
   ui <- miniPage(
     gadgetTitleBar('Drag and double click to zoom', left=NULL),
+    tags$head(HTML('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">')),
+    conditionalPanel(condition="$('html').hasClass('shiny-busy')",
+                     tags$div(HTML('<i class="fa fa-refresh fa-spin"></i>'))
+    ),
     plotOutput('plot', height='95%',
                dblclick='plot_dblclick',
                hover=hoverOpts('plot_hover', 
