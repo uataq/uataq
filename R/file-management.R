@@ -15,7 +15,7 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat')
   require(dplyr)
   require(readr)
   
-  time_col <- grep('time', names(df), ignore.case=T, value=T)
+  time_col <- grep('time', names(df), ignore.case=T, value=T)[1]
   
   grp <- df %>%
     rename_(.dots=setNames(time_col, 'Time_temp')) %>%
