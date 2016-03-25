@@ -12,6 +12,8 @@
 archive <- function(df, tz='UTC', path='%Y_%m.dat')
 {
   if (nrow(df) < 1) stop('No data to append.')
+  if (!dir.exists(dirname(path)))
+    dir.create(dirname(path), recursive=T, mode='0755')
   require(dplyr)
   require(readr)
   
