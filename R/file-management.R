@@ -40,13 +40,15 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat')
       
       df_list[[i]] <- df_list[[i]] %>%
         filter(Time_temp > t_start) %>%
-        mutate(Time_temp = format(Time_temp, tz=tz)) %>%
+        mutate(Time_temp = format(Time_temp, tz=tz, 
+                                  format='%Y-%m-%d %H:%M:%OS2')) %>%
         rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
       
       readr::write_csv(df_list[[i]], fnm[[i]], append=T)
     } else {
       df_list[[i]] <- df_list[[i]] %>%
-        mutate(Time_temp = format(Time_temp, tz=tz)) %>%
+        mutate(Time_temp = format(Time_temp, tz=tz, 
+                                  format='%Y-%m-%d %H:%M:%OS2')) %>%
         rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
       
       readr::write_csv(df_list[[i]], fnm[[i]], append=F)
