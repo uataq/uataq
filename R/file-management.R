@@ -21,7 +21,7 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat')
   
   grp <- df %>%
     rename_(.dots=setNames(time_col, 'Time_temp')) %>%
-    arrange(Time_temp) %>%
+    # arrange(Time_temp) %>%
     filter(!is.na(Time_temp)) %>%
     group_by(fnm = format(Time_temp, tz=tz, format=path)) %>%
     do(df_list = data.frame(.) %>% 
