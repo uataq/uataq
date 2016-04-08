@@ -269,8 +269,11 @@ na_interp <- function(y, x=NULL) {
 #'
 #' @param x numeric values
 #' @param n number of points to smooth by
+#' @param na.rm remove NA values
 #'                  
 #' @export
-run_smooth <- function(x, n=10) {
+run_smooth <- function(x, n=10, na.rm=T) {
+  n <- trunc(n)
+  if (na.rm) x <- x[!is.na(x)]
   return(as.numeric(stats::filter(x, rep(1 / n, n), sides=2)))
 }
