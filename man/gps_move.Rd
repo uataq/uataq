@@ -19,6 +19,7 @@ list containing (1) \code{$speed} at each point, (2)
   the direction of movement in degrees.
 }
 \description{
-\code{gps_move} calculates the speed in m/s between GPS coordinates
+\code{gps_move} calculates the speeds, distances, and directions given
+  vectors of GPS coordinates
 }
 

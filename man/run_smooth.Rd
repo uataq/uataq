@@ -4,12 +4,14 @@
 \alias{run_smooth}
 \title{Running mean smoothing}
 \usage{
-run_smooth(x, n = 10)
+run_smooth(x, n = 10, na.rm = T)
 }
 \arguments{
 \item{x}{numeric values}
 
 \item{n}{number of points to smooth by}
+
+\item{na.rm}{remove NA values}
 }
 \description{
 \code{run_smooth} generates smoothed representation of x
