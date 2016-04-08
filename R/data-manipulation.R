@@ -272,5 +272,5 @@ na_interp <- function(y, x=NULL) {
 #'                  
 #' @export
 run_smooth <- function(x, n=10) {
-  return(stats::filter(x, rep(1 / n, n), sides=2))
+  return(as.numeric(stats::filter(x, rep(1 / n, n), sides=2)))
 }
