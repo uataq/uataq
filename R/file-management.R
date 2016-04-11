@@ -9,7 +9,7 @@
 #'   compatible with \code{strptime}
 #' 
 #' @export
-archive <- function(df, tz='UTC', path='%Y_%m.dat')
+archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
 {
   if (nrow(df) < 1) stop('No data to append.')
   if (!dir.exists(dirname(path)))
@@ -43,15 +43,19 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat')
         mutate(Time_temp = format(Time_temp, tz=tz, 
                                   format='%Y-%m-%d %H:%M:%OS2')) %>%
         rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
-      
-      readr::write_csv(df_list[[i]], fnm[[i]], append=T)
+      append <- T
+      if (is.null(col_names)) col_names <- !append
+      readr::write_csv(df_list[[i]], fnm[[i]], 
+                       append=append, col_names=col_names)
     } else {
       df_list[[i]] <- df_list[[i]] %>%
         mutate(Time_temp = format(Time_temp, tz=tz, 
                                   format='%Y-%m-%d %H:%M:%OS2')) %>%
         rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
-      
-      readr::write_csv(df_list[[i]], fnm[[i]], append=F)
+      append <- F
+      if (is.null(col_names)) col_names <- !append
+      readr::write_csv(df_list[[i]], fnm[[i]], 
+                       append=append, col_names=col_names)
     }
   }
 }
