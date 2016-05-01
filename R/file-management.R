@@ -45,8 +45,6 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
         rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
       append <- T
       if (is.null(col_names)) col_names <- !append
-      readr::write_csv(df_list[[i]], fnm[[i]], 
-                       append=append, col_names=col_names)
     } else {
       df_list[[i]] <- df_list[[i]] %>%
         mutate(Time_temp = format(Time_temp, tz=tz, 
@@ -54,9 +52,10 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
         rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
       append <- F
       if (is.null(col_names)) col_names <- !append
-      readr::write_csv(df_list[[i]], fnm[[i]], 
-                       append=append, col_names=col_names)
     }
+    if (nrow(df_list[[i]]) < 1) next
+    readr::write_csv(df_list[[i]], fnm[[i]], 
+                     append=append, col_names=col_names)
   }
 }
 
