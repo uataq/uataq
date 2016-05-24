@@ -4,7 +4,7 @@
 \alias{archive}
 \title{Slice data_frame into files}
 \usage{
-archive(df, tz = "UTC", path = "\%Y_\%m.dat")
+archive(df, tz = "UTC", path = "\%Y_\%m.dat", col_names = NULL)
 }
 \arguments{
 \item{df}{data_frame to save. Must contain a column named 'time'}
