@@ -3,6 +3,7 @@
 export(archive)
 export(breakstr)
 export(calibrate)
+export(clc)
 export(find_neighbor)
 export(gps_move)
 export(iggplot)
