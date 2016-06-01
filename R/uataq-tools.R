@@ -62,3 +62,8 @@ bad_data_addin <- function() {
   viewer <- dialogViewer('Generate bad data string', width=700)
   runGadget(ui, server, viewer = viewer)
 }
+
+#' Clear R console
+#'
+#' \code{clc} sends ctrl+L to clear the R console.
+clc <- function() {cat("\014")}
