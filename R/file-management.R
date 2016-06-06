@@ -7,6 +7,10 @@
 #' @param tz timezone of POSIXct timestamp in df
 #' @param path file naming scheme used to split and save data. Format must be
 #'   compatible with \code{strptime}
+#' @param col_names whether to write header line with column names, NULL applies
+#'   column names to new files only, FALSE doesn't write a header, and TRUE
+#'   will write a line with the column names even if appending. Be careful with
+#'   TRUE, as you may end up with column flags mid-file.
 #' 
 #' @export
 archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
@@ -18,6 +22,7 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
   require(readr)
   
   time_col <- grep('time', names(df), ignore.case=T, value=T)[1]
+  write_col_names <- col_names
   
   grp <- df %>%
     rename_(.dots=setNames(time_col, 'Time_temp')) %>%
@@ -31,7 +36,7 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
   df_list <- grp$df_list
   
   for (i in 1:length(fnm)) {
-    if(file.exists(fnm[[i]])){
+    if (file.exists(fnm[[i]])) {
       t_start <- system(paste0('tail -n 1 ', fnm[[i]]), intern=T) %>%
         uataq::breakstr() %>%
         select(1) %>%
@@ -44,18 +49,17 @@ archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
                                   format='%Y-%m-%d %H:%M:%OS2')) %>%
         rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
       append <- T
-      if (is.null(col_names)) col_names <- !append
     } else {
       df_list[[i]] <- df_list[[i]] %>%
         mutate(Time_temp = format(Time_temp, tz=tz, 
                                   format='%Y-%m-%d %H:%M:%OS2')) %>%
         rename_(.dots=setNames('Time_temp', paste0('Time_', tz)))
       append <- F
-      if (is.null(col_names)) col_names <- !append
     }
     if (nrow(df_list[[i]]) < 1) next
+    if (is.null(col_names)) write_col_names <- !append
     readr::write_csv(df_list[[i]], fnm[[i]], 
-                     append=append, col_names=col_names)
+                     append=append, col_names=write_col_names)
   }
 }
 

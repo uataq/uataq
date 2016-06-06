@@ -13,6 +13,11 @@ archive(df, tz = "UTC", path = "\%Y_\%m.dat", col_names = NULL)
 
 \item{path}{file naming scheme used to split and save data. Format must be
 compatible with \code{strptime}}
+
+\item{col_names}{whether to write header line with column names, NULL applies
+column names to new files only, FALSE doesn't write a header, and TRUE
+will write a line with the column names even if appending. Be careful with
+TRUE, as you may end up with column flags mid-file.}
 }
 \description{
 \code{archive} splits data_frame by time specified in the \code{path}

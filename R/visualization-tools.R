@@ -37,7 +37,7 @@ iggplot <- function(fig) {
     textOutput('hover_vals')
   )
   
-  # Plot reactivity ----------------------------------------------------------=
+  # Plot reactivity -----------------------------------------------------------
   server <- function(input, output) {
     lim <- reactiveValues(x=NULL, y=NULL)
     
