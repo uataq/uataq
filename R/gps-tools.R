@@ -56,6 +56,7 @@ gps_move <- function(Time, lat, lon) {
 #'   
 #' @export
 gps_dm2dd <- function(x) {
+  x <- as.numeric(x)
   dd <- floor(x/100)
   return(dd + (x - dd*100)/60)
 }
