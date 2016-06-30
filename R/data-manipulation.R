@@ -89,7 +89,10 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   # Apply run length encoding to slice data by each unique valve change and add
   # an identifier for each period. Reconstruct the original values with the
   # additional index column and perform averaging on each period (per_mean).
-  run <- as_data_frame(rle(data$gask))
+  run <- data$gask %>%
+    rle %>%
+    unclass %>%
+    as_data_frame
   
   data$idx <- run %>%
     mutate(values = 1:n()) %>%
