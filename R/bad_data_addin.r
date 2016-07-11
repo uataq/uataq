@@ -17,7 +17,7 @@ bad_data_addin <- function() {
   require(dplyr)
   require(miniUI)
   require(shiny)
-  
+
   # Generate Addin UI ----------------------------------------------------------
   ui <- miniPage(
     miniContentPanel(
@@ -27,7 +27,7 @@ bad_data_addin <- function() {
            'MST or MDT as displayed on the <a href="http://air.utah.edu/s/gasview/"',
            'target="_blank">UATAQ gasview data display</a>.'),
       fillRow(height=80,
-              textInput('t_start', 'Start time', '2016-02-12 00:00:00.000', 
+              textInput('t_start', 'Start time', '2016-02-12 00:00:00.000',
                         placeholder='2016-02-12 00:00:00.000'),
               textInput('t_end', 'End time', '2016-02-12 00:00:00.000',
                         placeholder='2016-02-12 00:00:00.000')
@@ -43,7 +43,7 @@ bad_data_addin <- function() {
       verbatimTextOutput('string')
     )
   )
-  
+
   # Produce bad data string ----------------------------------------------------
   server <- function(input, output) {
     output$string <- renderText({
@@ -58,13 +58,7 @@ bad_data_addin <- function() {
       paste(sep=', ', t_start, t_end, input$miu_old, input$miu_new, comment)
     })
   }
-  
+
   viewer <- dialogViewer('Generate bad data string', width=700)
   runGadget(ui, server, viewer = viewer)
 }
-
-#' Clear R console
-#'
-#' \code{clc} sends ctrl+L to clear the R console.
-#' @export
-clc <- function() {cat("\014")}
