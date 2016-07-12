@@ -6,10 +6,6 @@
 #' @param time POSIXct timestamps of measurements
 #' @param co2 numeric co2 concentrations, in ppm
 #' @param d13c numeric d13C, in per mille
-#' @param bg_co2 numeric background co2 concentration, in ppm. Can be a single
-#'   number or a vector of background concentrations over time
-#' @param bg_d13c numeric background d13C, in per mille. Can be a single
-#'   number or a vector of background concentrations over time
 #' @param format character format compatible with strptime to split the data
 #'   by. Defaults to '\%Y-\%m-01' which indicates monthly regression statistics
 #'   with floored timestamps (e.g. 2016-01-01 indicates the statistics for the
@@ -21,12 +17,8 @@
 #'   split
 #'
 #' @export
-keeling_split <- function(time, co2, d13c, bg_co2 = 400, bg_d13c = -8,
-                          format = '%Y-%m-01', tz = 'UTC') {
+keeling_split <- function(time, co2, d13c, format = '%Y-%m-01', tz = 'UTC') {
   require(dplyr)
-
-  bg_co2_inv  <- 1 / bg_co2
-  bg_d13c_inv <- 1 / bg_d13c
 
   df <- data_frame(time, co2, d13c, co2_inv = 1 / co2, d13c_inv = 1 / d13c)
 
