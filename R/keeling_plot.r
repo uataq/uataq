@@ -1,7 +1,7 @@
 #' Keeling isotope analysis
 #'
 #' \code{keeling} performs keeling isotope analysis, generating a linear fit
-#'   and d13C keeling plot.
+#'   using QR regression and a d13C keeling plot.
 #'
 #' @param co2 numeric co2 concentrations, in ppm
 #' @param d13c numeric d13C, in per mille
@@ -12,8 +12,7 @@
 #'   \code{$fig} the ggplot figure.
 #'
 #' @export
-keeling <- function(co2, d13c, bg_co2=400, bg_d13c=-8)
-{
+keeling_plot <- function(co2, d13c, bg_co2=400, bg_d13c=-8) {
   require(dplyr)
   require(ggplot2)
 
@@ -25,7 +24,7 @@ keeling <- function(co2, d13c, bg_co2=400, bg_d13c=-8)
                    co2_inv = 1 / co2,
                    d13c_inv = 1 / d13c)
 
-  fit <- with(df, lm(d13c ~ co2_inv))
+  fit <- with(df, lm(d13c ~ co2_inv, method = 'qr'))
 
   lab <- list(x=min(df$co2_inv) + 0.25 * (max(df$co2_inv) - min(df$co2_inv)),
               y=max(df$d13c) - 0.2 * (max(df$d13c) - min(df$d13c)),
