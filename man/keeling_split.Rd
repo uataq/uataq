@@ -4,8 +4,7 @@
 \alias{keeling_split}
 \title{Keeling isotope analysis}
 \usage{
-keeling_split(time, co2, d13c, bg_co2 = 400, bg_d13c = -8,
-  format = "\%Y-\%m-01", tz = "UTC")
+keeling_split(time, co2, d13c, format = "\%Y-\%m-01", tz = "UTC")
 }
 \arguments{
 \item{time}{POSIXct timestamps of measurements}
@@ -13,12 +12,6 @@ keeling_split(time, co2, d13c, bg_co2 = 400, bg_d13c = -8,
 \item{co2}{numeric co2 concentrations, in ppm}
 
 \item{d13c}{numeric d13C, in per mille}
-
-\item{bg_co2}{numeric background co2 concentration, in ppm. Can be a single
-number or a vector of background concentrations over time}
-
-\item{bg_d13c}{numeric background d13C, in per mille. Can be a single
-number or a vector of background concentrations over time}
 
 \item{format}{character format compatible with strptime to split the data
 by. Defaults to '\%Y-\%m-01' which indicates monthly regression statistics
