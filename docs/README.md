@@ -2,7 +2,7 @@
 Calibration Documentation
 =========================
 
-This document outlines the workflow used in the UATAQ trace gas calibration algorithm written in R and is included with other data manipulation and trace gas analysis tools found in the [uataq R package](https://github.com/benfasoli/uataq). The raw source code can be found [here](https://github.com/benfasoli/uataq/blob/master/R/data-manipulation.R#L25-L173).
+This document outlines the workflow used in the UATAQ trace gas calibration algorithm written in R and is included with other data manipulation and trace gas analysis tools found in the [uataq R package](https://github.com/benfasoli/uataq). The raw source code can be found [here](https://github.com/benfasoli/uataq/blob/master/R/calibrate.r).
 
 Typically, UATAQ sites are calibrated every two hours using three reference gases. The measurement of the reference gas is linearly interpolated during bracketed periods when sampling from other sources. For managing tolerances, see the Optional Inputs section.
 
