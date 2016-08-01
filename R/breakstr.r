@@ -10,14 +10,15 @@
 #'                  of columns found in strings
 #'
 #' @export
-breakstr <- function(strings, pattern=',', ncol=NULL) {
+breakstr <- function(strings, pattern = ',', ncol = NULL) {
   require(dplyr)
   require(stringr)
   ndelim <- stringr::str_count(strings, pattern)
-  if(is.null(ncol)) ncol <- median(ndelim, na.rm=T) + 1
+  if (is.null(ncol)) 
+    ncol <- median(ndelim, na.rm = T) + 1
   split <- subset(strings, ndelim == (ncol-1)) %>%
-    stringr::str_split_fixed(pattern, n=ncol) %>%
-    as.data.frame(stringsAsFactors=F) %>%
-    as_data_frame()
+    stringr::str_split_fixed(pattern, n = ncol) %>%
+    as.data.frame(stringsAsFactors = F) %>%
+    mutate_each(funs(type.convert(., as.is = T)))
   return(split)
 }
