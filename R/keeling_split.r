@@ -16,10 +16,9 @@
 #'   \code{lm_obj} the fit object created using the lm function for each time
 #'   split
 #'
+#' @import dplyr
 #' @export
 keeling_split <- function(time, co2, d13c, format = '%Y-%m-01', tz = 'UTC') {
-  require(dplyr)
-
   df <- data_frame(time, co2, d13c, co2_inv = 1 / co2, d13c_inv = 1 / d13c)
 
   df %>%

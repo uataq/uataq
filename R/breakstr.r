@@ -9,10 +9,9 @@
 #' @param ncol    number of columns. NULL will determine by the median number
 #'                  of columns found in strings
 #'
+#' @import dplyr stringr
 #' @export
 breakstr <- function(strings, pattern = ',', ncol = NULL) {
-  require(dplyr)
-  require(stringr)
   ndelim <- stringr::str_count(strings, pattern)
   if (is.null(ncol)) 
     ncol <- median(ndelim, na.rm = T) + 1

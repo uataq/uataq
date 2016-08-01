@@ -8,9 +8,10 @@
 #' @param sep the field separator string.
 #' @param ... arguments passed to readr::write_delim
 #'
+#' @importFrom readr write_delim
 #' @export
 rds2csv <- function(rds, file, sep=',', ...) {
   require(readr)
   rd <- readRDS(rds)
-  readr::write_delim(rd, file, delim=sep, ...)
+  write_delim(rd, file, delim=sep, ...)
 }

@@ -13,11 +13,9 @@
 #'   valve positions
 #' @param miu_new character string to replace the old miu values with, or NA to
 #'   remove the data
+#'   
+#' @import dplyr miniUI shiny
 bad_data_addin <- function() {
-  require(dplyr)
-  require(miniUI)
-  require(shiny)
-
   # Generate Addin UI ----------------------------------------------------------
   ui <- miniPage(
     miniContentPanel(

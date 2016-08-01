@@ -10,11 +10,9 @@
 #' f <- qplot(x, sin(x))
 #' iggplot(f)
 #'
+#' @import ggplot2 miniUI shiny
 #' @export
 iggplot <- function(fig) {
-  require(ggplot2)
-  require(miniUI)
-  require(shiny)
   if(!all(class(fig) %in% c('gg','ggplot')))
     stop('Incorrect fig input. Needs to be a ggplot object.')
 

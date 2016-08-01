@@ -16,11 +16,10 @@
 #'               exceeded, will remove all atmospheric data until the next
 #'               calibration
 #'
+#' @import dplyr
 #' @export
 calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
 {
-  require(dplyr)
-
   # Input error checking ------------------------------------------------------
   data <- data_frame(time, gasm=as.numeric(gasm), gask=as.numeric(gask)) %>%
     arrange(time) %>%

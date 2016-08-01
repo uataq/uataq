@@ -12,14 +12,13 @@
 #'   will write a line with the column names even if appending. Be careful with
 #'   TRUE, as you may end up with column flags mid-file.
 #'
+#' @import dplyr readr
 #' @export
 archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
 {
   if (nrow(df) < 1) stop('No data to append.')
   if (!dir.exists(dirname(path)))
     dir.create(dirname(path), recursive=T, mode='0755')
-  require(dplyr)
-  require(readr)
 
   time_col <- grep('time', names(df), ignore.case=T, value=T)[1]
   write_col_names <- col_names

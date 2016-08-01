@@ -11,11 +11,9 @@
 #' @return list containing (1) \code{$fit} the linear fit object and (2)
 #'   \code{$fig} the ggplot figure.
 #'
+#' @import dplyr ggplot2
 #' @export
 keeling_plot <- function(co2, d13c, bg_co2=400, bg_d13c=-8) {
-  require(dplyr)
-  require(ggplot2)
-
   bg_co2_inv  <- 1 / bg_co2
   bg_d13c_inv <- 1 / bg_d13c
 
