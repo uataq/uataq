@@ -7,6 +7,7 @@
 #' @param ncol number of colors to use between cmin and cmax
 #' @param cols colors to interpolate between
 #' @param ...  arguments to pass to colorRampPalette
+#' @export
 colorize <- function(data, clim=NULL, ncol=64,
                      cols=c('blue', 'cyan', 'green', 'yellow', 'orange', 'red'), ...) {
   if(is.null(clim)) clim <- c(min(data, na.rm=T), max(data, na.rm=T))
