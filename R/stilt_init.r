@@ -22,6 +22,4 @@ stilt_init <- function(name, repo = 'https://github.com/benfasoli/stilt') {
   setwd(name)
   system('chmod +x setup')
   system('./setup')
-  system(paste0('sed -i "s/project <- \'stilt\'/project <- \'', name,
-                '\'/g" r/run_stilt.r'))
 }
