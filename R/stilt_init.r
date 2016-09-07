@@ -8,11 +8,14 @@
 #' @export
 
 stilt_init <- function(name, repo = 'https://github.com/benfasoli/stilt') {
+  
   repo_options <- c('https://github.com/benfasoli/stilt')
   
   if (!repo %in% repo_options) {
     stop('Invalid repo argument. Try https://github.com/benfasoli/stilt')
   }
+  
+  name <- basename(name)
   
   system(paste('git clone', repo))
   system(paste('mv stilt', name))
