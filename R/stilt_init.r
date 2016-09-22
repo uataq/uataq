@@ -22,4 +22,9 @@ stilt_init <- function(name, repo = 'https://github.com/benfasoli/stilt') {
   setwd(name)
   system('chmod +x setup')
   system('./setup')
+  
+  run_stilt <- readLines('r/run_stilt.r')
+  name_idx <- grepl('project <-', run_stilt, fixed = T)
+  run_stilt[name_idx] <- paste0('project <- \'', name, '\'')
+  writeLines(run_stilt, 'r/run_stilt.r'
 }
