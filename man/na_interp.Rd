@@ -15,4 +15,3 @@ na_interp(y, x = NULL)
 \code{na_interp} linearly interpolates NA values found in vector y with
   respect to dimension x (e.g. timestamp).
 }
-

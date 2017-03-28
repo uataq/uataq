@@ -23,4 +23,3 @@ list containing (1) \code{$fit} the linear fit object and (2)
 \code{keeling} performs keeling isotope analysis, generating a linear fit
   using QR regression and a d13C keeling plot.
 }
-

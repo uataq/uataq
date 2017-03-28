@@ -13,4 +13,3 @@ count_lines(file)
 \code{count_lines} uses UNIX system command \code{wc} to determine the number
   of lines in the given file
 }
-

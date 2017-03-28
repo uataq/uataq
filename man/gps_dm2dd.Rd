@@ -13,4 +13,3 @@ gps_dm2dd(x)
 \code{gps_dm2dd} converts the raw GPS $GPGGA output in the form of
   dddmm.mmm to map compatible degree form dd.dddd.
 }
-

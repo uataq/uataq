@@ -13,4 +13,3 @@ console with uataq::clc()}
 \description{
 Send newline characters to the R console
 }
-

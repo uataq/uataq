@@ -20,4 +20,3 @@ f <- qplot(x, sin(x))
 iggplot(f)
 
 }
-

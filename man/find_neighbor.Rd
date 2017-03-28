@@ -16,4 +16,3 @@ find_neighbor(x, y)
   using findInterval. Returns the index to be applied to y that most
   closely matches x.
 }
-

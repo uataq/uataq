@@ -19,4 +19,3 @@ Ben Fasoli
 
 \code{stilt_init} generates the framework for a new STILT modeling project
 }
-

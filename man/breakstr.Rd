@@ -19,4 +19,3 @@ of columns found in strings}
   data_frame. Lines that do not fit the correct number of columns
   are omitted.
 }
-

@@ -10,4 +10,3 @@ update_uataq()
 \code{update_uataq} fetches the most recent version of the uataq R package
   from github.
 }
-

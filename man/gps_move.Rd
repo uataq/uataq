@@ -22,4 +22,3 @@ list containing (1) \code{$speed} at each point, (2)
 \code{gps_move} calculates the speeds, distances, and directions given
   vectors of GPS coordinates
 }
-

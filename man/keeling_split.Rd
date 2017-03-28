@@ -28,4 +28,3 @@ data_frame containing the slope, yintercept, fit statistics including
 \code{keeling} performs keeling isotope analysis, generating a linear fit
   using QR regression and a d13C keeling plot.
 }
-

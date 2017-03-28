@@ -14,4 +14,3 @@ run_smooth(x, n = 10)
 \description{
 \code{run_smooth} generates smoothed representation of x
 }
-

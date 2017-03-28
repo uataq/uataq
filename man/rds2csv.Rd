@@ -19,4 +19,3 @@ for writing. '' indicates output to the console.}
 \description{
 \code{rds2csv} converts .rds files to ASCII tabular representation
 }
-

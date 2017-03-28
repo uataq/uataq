@@ -26,4 +26,3 @@ remove the data}
   on the UATAQ data viewer) and formatted as '2016-02-12 00:00:00.000'.
   Deployed as an RStudio Addin.
 }
-

@@ -23,4 +23,3 @@ TRUE, as you may end up with column flags mid-file.}
 \code{archive} splits data_frame by time specified in the \code{path}
   argument and saves to files.
 }
-

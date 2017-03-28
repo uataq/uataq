@@ -9,4 +9,3 @@ clc()
 \description{
 \code{clc} sends ctrl+L to clear the R console.
 }
-

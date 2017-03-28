@@ -29,4 +29,3 @@ calibration}
 \code{calibrate} atmospheric trace gas data against several reference gas
   tanks.
 }
-
