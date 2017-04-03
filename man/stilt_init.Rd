@@ -4,12 +4,12 @@
 \alias{stilt_init}
 \title{Initialize new STILT project}
 \usage{
-stilt_init(name, repo = "https://github.com/benfasoli/stilt")
+stilt_init(project, repo = "https://github.com/benfasoli/stilt")
 }
 \arguments{
-\item{name}{name or location to initialize new project}
+\item{project}{name or location to initialize new project}
 
-\item{repo}{}
+\item{repo}{repo to fetch stilt from using \code{git clone repo}}
 }
 \description{
 Initialize new STILT project
