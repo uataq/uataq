@@ -22,6 +22,6 @@ stilt_init <- function(project, repo = 'https://github.com/benfasoli/stilt') {
   run_stilt <- readLines('r/run_stilt.r')
   # name_idx <- grepl('project <-', run_stilt, fixed = T)
   # run_stilt[name_idx] <- paste0('project <- \'', project, '\'')
-  run_stilt <- whisker::whisker.render(run_stilt, project)
+  run_stilt <- whisker::whisker.render(run_stilt)
   writeLines(run_stilt, 'r/run_stilt.r')
 }
