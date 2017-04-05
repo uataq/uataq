@@ -15,7 +15,7 @@ stilt_init <- function(project, repo = 'https://github.com/benfasoli/stilt') {
   
   system(paste('git clone', repo))
   system(paste('mv stilt', project))
-  setwd(name)
+  setwd(project)
   system('chmod +x setup')
   system('./setup')
   
