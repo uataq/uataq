@@ -1,5 +1,7 @@
 # Installation
 Package can be installed using `devtools`.
+Logan made a change, here.
+
 ```R
 if (!require('devtools')) install.packages('devtools')
 devtools::install_github('benfasoli/uataq')
