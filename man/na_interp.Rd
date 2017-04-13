@@ -9,9 +9,9 @@ na_interp(y, x = NULL)
 \arguments{
 \item{y}{numeric vector in which to fill bracketed NA values}
 
-\item{x}{vector giving dimension of y. NULL if y is equally spaced}
+\item{x}{vector giving index of y. NULL if y is equally spaced}
 }
 \description{
 \code{na_interp} linearly interpolates NA values found in vector y with
-  respect to dimension x (e.g. timestamp).
+  respect to index x (e.g. timestamp).
 }
