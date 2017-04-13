@@ -18,7 +18,7 @@ na_interp <- function (y, x = NULL) {
   xsub <- x[start:end]
   ysub <- y[start:end]
   idx <- which(is.na(ysub))
-  ysub[idx] <- approx(xsub, ysub, xout = idx, method = "linear")$y
+  ysub[idx] <- approx(xsub, ysub, xout = xsub[idx], method = "linear")$y
   y[start:end] <- ysub
   return(y)
 }
