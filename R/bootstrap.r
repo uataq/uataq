@@ -9,11 +9,11 @@
 #' @param size size of each sample
 #' @param iter number of bootstrap iterations
 #'
-#' @import dplyr
 #' @export
 bootstrap <- function(x, fun, size = nrow(x), iter = 10) {
   sapply(1:iter, function(i) {
-    y <- dplyr::sample_n(x, size, replace = T)
+    id <- sample(1:nrow(x), size = size, replace = T)
+    y <- x[id, ]
     fun(y)
   })
 }
