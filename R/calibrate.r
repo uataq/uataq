@@ -133,9 +133,9 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
   # is perfectly linear through zero and make only a slope correction.
   n1 <- n_cal == 1
   if (ncol(x) < 2) {
-    m[n1] <- x[n1, ] / y[n1,]
+    m[n1] <- y[n1,] / x[n1, ]
   } else {
-    m[n1] <- rowSums(x[n1, ], na.rm=T) / rowSums(y[n1,], na.rm=T)
+    m[n1] <- rowSums(y[n1,], na.rm=T) / rowSums(x[n1, ], na.rm=T)
   }
   b[n1] <- 0
 
