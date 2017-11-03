@@ -40,6 +40,7 @@ calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
                       b    = NA,
                       n    = 0,
                       r_sq = NA,
+                      rmse = NA,
                       flag = data$gask) %>%
       filter(flag == -10) %>%
       select(-flag)
