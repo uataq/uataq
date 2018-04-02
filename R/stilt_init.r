@@ -9,21 +9,25 @@
 #' @import whisker
 #' @export
 
-stilt_init <- function(project, repo = 'https://github.com/benfasoli/stilt') {
+stilt_init <- function(project, branch = 'master',
+                       repo = 'https://github.com/uataq/stilt') {
 
-  project <- basename(project)
+  # Extract project name and working directory
+  project <- make.names(basename(project))
   wd <- dirname(project)
-  if (wd == '.') wd <- getwd()
-
-  system(paste('git clone', repo))
-  system(paste('mv stilt', project))
-  setwd(project)
+  if (wd == '.') 
+    wd <- getwd()
+  
+  # Clone git repository
+  system(paste('git clone -b', branch, repo, project))
+  
+  # Run setup executable
+  setwd(file.path(wd, project))
   system('chmod +x setup')
   system('./setup')
-
+  
+  # Render run_stilt.r template with project name
   run_stilt <- readLines('r/run_stilt.r')
-  # name_idx <- grepl('project <-', run_stilt, fixed = T)
-  # run_stilt[name_idx] <- paste0('project <- \'', project, '\'')
   run_stilt <- whisker::whisker.render(run_stilt)
   writeLines(run_stilt, 'r/run_stilt.r')
 }

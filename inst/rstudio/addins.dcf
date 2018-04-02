@@ -1,4 +1,0 @@
-Name: Make bad data string
-Description: Formats a bad data string compatible with UATAQ processing
-Binding: bad_data_addin
-Interactive: true
