@@ -4,7 +4,8 @@
 \alias{stilt_init}
 \title{Initialize new STILT project}
 \usage{
-stilt_init(project, repo = "https://github.com/benfasoli/stilt")
+stilt_init(project, branch = "master",
+  repo = "https://github.com/uataq/stilt")
 }
 \arguments{
 \item{project}{name or location to initialize new project}
