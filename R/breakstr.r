@@ -10,9 +10,10 @@
 #'                  of columns found in strings
 #'
 #' @import dplyr stringr
+#' @importFrom stats median
+#' @importFrom utils type.convert
 #' @export
 breakstr <- function(strings, pattern = ',', ncol = NULL) {
-  require(stringr)
   ndelim <- str_count(strings, pattern)
   if (is.null(ncol))
     ncol <- median(ndelim, na.rm = T) + 1

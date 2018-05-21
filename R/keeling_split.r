@@ -10,6 +10,7 @@
 #'   by. Defaults to '\%Y-\%m-01' which indicates monthly regression statistics
 #'   with floored timestamps (e.g. 2016-01-01 indicates the statistics for the
 #'   month of January, 2016)
+#' @param tz timezone interpreted by strptime
 #'
 #' @return data_frame containing the slope, yintercept, fit statistics including
 #'   \code{r_squared}, \code{rmse}, \code{std_error}, and \code{n}, and
@@ -17,6 +18,7 @@
 #'   split
 #'
 #' @import dplyr
+#' @importFrom stats coef lm resid
 #' @export
 keeling_split <- function(time, co2, d13c, format = '%Y-%m-01', tz = 'UTC') {
   df <- data_frame(time, co2, d13c, co2_inv = 1 / co2, d13c_inv = 1 / d13c)

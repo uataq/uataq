@@ -13,6 +13,7 @@
 #'   TRUE, as you may end up with column flags mid-file.
 #'
 #' @import dplyr readr
+#' @importFrom stats setNames
 #' @export
 archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
 {

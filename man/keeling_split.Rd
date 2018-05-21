@@ -17,6 +17,8 @@ keeling_split(time, co2, d13c, format = "\%Y-\%m-01", tz = "UTC")
 by. Defaults to '\%Y-\%m-01' which indicates monthly regression statistics
 with floored timestamps (e.g. 2016-01-01 indicates the statistics for the
 month of January, 2016)}
+
+\item{tz}{timezone interpreted by strptime}
 }
 \value{
 data_frame containing the slope, yintercept, fit statistics including

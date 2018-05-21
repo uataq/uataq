@@ -7,6 +7,8 @@
 #' @param ncol number of colors to use between cmin and cmax
 #' @param cols colors to interpolate between
 #' @param ...  arguments to pass to colorRampPalette
+#' 
+#' @importFrom grDevices colorRampPalette
 #' @export
 colorize <- function(data, clim=NULL, ncol=64,
                      cols=c('blue', 'cyan', 'green', 'yellow', 'orange', 'red'), ...) {

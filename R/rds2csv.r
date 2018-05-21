@@ -11,7 +11,8 @@
 #' @importFrom readr write_delim
 #' @export
 rds2csv <- function(rds, file, sep=',', ...) {
-  require(readr)
   rd <- readRDS(rds)
-  write_delim(rd, file, delim=sep, ...)
+  if (!is.data.frame(rd)) 
+    stop(paste(rds, 'is not a data.frame.'))
+  readr::write_delim(rd, file, delim=sep, ...)
 }

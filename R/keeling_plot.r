@@ -12,6 +12,7 @@
 #'   \code{$fig} the ggplot figure.
 #'
 #' @import dplyr ggplot2
+#' @importFrom stats coef lm
 #' @export
 keeling_plot <- function(co2, d13c, bg_co2=400, bg_d13c=-8) {
   bg_co2_inv  <- 1 / bg_co2

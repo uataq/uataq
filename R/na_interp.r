@@ -6,6 +6,8 @@
 #' @param y numeric vector in which to fill bracketed NA values
 #' @param x vector giving index of y. NULL if y is equally spaced
 #'
+#' @importFrom stats approx
+#' @importFrom utils head tail
 #' @export
 na_interp <- function (y, x = NULL) {
   if (is.null(x)) 

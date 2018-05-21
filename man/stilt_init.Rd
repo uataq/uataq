@@ -10,6 +10,8 @@ stilt_init(project, branch = "master",
 \arguments{
 \item{project}{name or location to initialize new project}
 
+\item{branch}{name of repo branch to checkout}
+
 \item{repo}{repo to fetch stilt from using \code{git clone repo}}
 }
 \description{
