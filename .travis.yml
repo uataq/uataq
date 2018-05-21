@@ -5,3 +5,7 @@ sudo: required
 env:
  global:
    - CRAN: http://cran.rstudio.com
+
+before_install:
+  - sudo rm -vf /etc/apt/sources.list.d/*riak*
+  - sudo apt-get update
