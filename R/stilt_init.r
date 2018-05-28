@@ -14,7 +14,7 @@ stilt_init <- function(project, branch = 'master',
                        repo = 'https://github.com/uataq/stilt') {
 
   # Extract project name and working directory
-  project <- make.names(basename(project))
+  project <- basename(project)
   wd <- dirname(project)
   if (wd == '.')
     wd <- getwd()

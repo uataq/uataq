@@ -1,6 +1,13 @@
 language: r
-warnings_are_errors: true
+
 sudo: required
+
+warnings_are_errors: true
+
+cache: packages
+
+before_install:
+  - sudo apt-get update -qq
 
 env:
  global:
