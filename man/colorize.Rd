@@ -19,5 +19,6 @@ colorize(data, clim = NULL, ncol = 64, cols = c("blue", "cyan",
 \item{...}{arguments to pass to colorRampPalette}
 }
 \description{
-\code{colorize} uses colorRampPalette() to generate custom color scales for plotting.
+\code{colorize} uses colorRampPalette() to generate custom color scales for
+plotting.
 }

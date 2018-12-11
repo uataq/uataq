@@ -17,7 +17,9 @@
 #'               calibration
 #'
 #' @import dplyr
+#' 
 #' @export
+
 calibrate <- function(time, gasm, gask, auto=F, er_tol=0.1, dt_tol=18000)
 {
   # Input error checking ------------------------------------------------------

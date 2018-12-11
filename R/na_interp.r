@@ -8,7 +8,9 @@
 #'
 #' @importFrom stats approx
 #' @importFrom utils head tail
+#' 
 #' @export
+
 na_interp <- function (y, x = NULL) {
   if (is.null(x)) 
     x <- 1:length(y)

@@ -6,6 +6,7 @@
 #' @param n number of points to smooth by
 #'
 #' @export
+
 run_smooth <- function(x, n=10) {
   n <- trunc(n)
   y <- as.numeric(stats::filter(x, rep(1 / n, n), sides=2))

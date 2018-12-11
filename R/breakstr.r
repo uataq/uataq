@@ -8,17 +8,15 @@
 #' @param pattern delimiter at which to split strings
 #' @param ncol    number of columns. NULL will determine by the median number
 #'                  of columns found in strings
-#'
-#' @import dplyr stringr
-#' @importFrom stats median
-#' @importFrom utils type.convert
+#' 
 #' @export
+
 breakstr <- function(strings, pattern = ',', ncol = NULL) {
-  ndelim <- str_count(strings, pattern)
+  ndelim <- stringr::str_count(strings, pattern)
   if (is.null(ncol))
-    ncol <- median(ndelim, na.rm = T) + 1
+    ncol <- stats::median(ndelim, na.rm = T) + 1
   subset(strings, ndelim == (ncol-1)) %>%
-    str_split_fixed(pattern, n = ncol) %>%
+    stringr::str_split_fixed(pattern, n = ncol) %>%
     as.data.frame(stringsAsFactors = F) %>%
-    mutate_all(funs(type.convert(., as.is = T)))
+    dplyr::mutate_all(funs(utils::type.convert(., as.is = T)))
 }

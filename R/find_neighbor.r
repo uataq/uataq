@@ -8,6 +8,7 @@
 #' @param y table to search values
 #'
 #' @export
+
 find_neighbor <- function(x, y){
   x <- as.numeric(x)
   y <- as.numeric(y)

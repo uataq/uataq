@@ -6,6 +6,7 @@
 #' @param x numeric coordinate, either latitude or longitude, to convert
 #'
 #' @export
+
 gps_dm2dd <- function(x) {
   x <- as.numeric(x)
   dd <- floor(x/100)

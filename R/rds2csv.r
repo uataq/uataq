@@ -9,7 +9,9 @@
 #' @param ... arguments passed to readr::write_delim
 #'
 #' @importFrom readr write_delim
+#' 
 #' @export
+
 rds2csv <- function(rds, file, sep=',', ...) {
   rd <- readRDS(rds)
   if (!is.data.frame(rd)) 

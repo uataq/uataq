@@ -12,6 +12,7 @@
 #'   the direction of movement in degrees.
 #'
 #' @export
+#' 
 gps_move <- function(Time, lat, lon) {
   if (length(Time)!=length(lat) | length(Time)!=length(lon))
     stop('Error: GPS input of different lengths.')

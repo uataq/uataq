@@ -13,12 +13,14 @@
 #'
 #' @import dplyr ggplot2
 #' @importFrom stats coef lm
+#' 
 #' @export
+
 keeling_plot <- function(co2, d13c, bg_co2=400, bg_d13c=-8) {
   bg_co2_inv  <- 1 / bg_co2
   bg_d13c_inv <- 1 / bg_d13c
 
-  df <- data_frame(co2,
+  df <- data.frame(co2,
                    d13c,
                    co2_inv = 1 / co2,
                    d13c_inv = 1 / d13c)

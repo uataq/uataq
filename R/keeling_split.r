@@ -19,7 +19,9 @@
 #'
 #' @import dplyr
 #' @importFrom stats coef lm resid
+#' 
 #' @export
+
 keeling_split <- function(time, co2, d13c, format = '%Y-%m-01', tz = 'UTC') {
   df <- data_frame(time, co2, d13c, co2_inv = 1 / co2, d13c_inv = 1 / d13c)
 

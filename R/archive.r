@@ -14,7 +14,9 @@
 #'
 #' @import dplyr readr
 #' @importFrom stats setNames
+#' 
 #' @export
+
 archive <- function(df, tz='UTC', path='%Y_%m.dat', col_names=NULL)
 {
   if (nrow(df) < 1) stop('No data to append.')

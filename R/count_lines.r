@@ -6,6 +6,7 @@
 #' @param file path to file in question
 #'
 #' @export
+
 count_lines <- function(file) {
   return(as.numeric(system(paste('wc -l <', file), intern = T)))
 }
