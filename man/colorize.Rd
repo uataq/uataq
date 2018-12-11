@@ -4,8 +4,8 @@
 \alias{colorize}
 \title{Generates hex colors for plotting}
 \usage{
-colorize(data, clim = NULL, ncol = 64, cols = c("blue", "cyan", "green",
-  "yellow", "orange", "red"), ...)
+colorize(data, clim = NULL, ncol = 64, cols = c("blue", "cyan",
+  "green", "yellow", "orange", "red"), ...)
 }
 \arguments{
 \item{data}{data to be converted to color scale}

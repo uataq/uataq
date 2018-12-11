@@ -7,7 +7,6 @@
 #' @param branch name of repo branch to checkout
 #' @param repo repo to fetch stilt from using \code{git clone repo}
 #'
-#' @import whisker
 #' @export
 
 stilt_init <- function(project, branch = 'master',
@@ -20,7 +19,11 @@ stilt_init <- function(project, branch = 'master',
     wd <- getwd()
 
   # Clone git repository
-  system(paste('git clone -b', branch, '--single-branch', repo, project))
+  system(paste('git clone ',
+               '-b', branch, 
+               '--single-branch',
+               '--depth=1',
+               repo, project))
 
   # Run setup executable
   setwd(file.path(wd, project))
