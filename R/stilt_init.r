@@ -34,4 +34,5 @@ stilt_init <- function(project, branch = 'master',
   run_stilt <- readLines('r/run_stilt.r')
   run_stilt <- whisker::whisker.render(run_stilt)
   writeLines(run_stilt, 'r/run_stilt.r')
+  setwd(wd)
 }
