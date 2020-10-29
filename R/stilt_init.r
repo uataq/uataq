@@ -9,7 +9,7 @@
 #'
 #' @export
 
-stilt_init <- function(project, branch = 'master',
+stilt_init <- function(project, branch = 'main',
                        repo = 'https://github.com/uataq/stilt') {
 
   # Extract project name and working directory
