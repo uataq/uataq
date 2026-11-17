@@ -15,8 +15,10 @@ breakstr <- function(strings, pattern = ',', ncol = NULL) {
   ndelim <- stringr::str_count(strings, pattern)
   if (is.null(ncol))
     ncol <- stats::median(ndelim, na.rm = T) + 1
-  subset(strings, ndelim == (ncol-1)) %>%
+  out <- subset(strings, ndelim == (ncol-1)) %>%
     stringr::str_split_fixed(pattern, n = ncol) %>%
-    as.data.frame(stringsAsFactors = F) %>%
-    dplyr::mutate_all(funs(utils::type.convert(., as.is = T)))
+    as.data.frame(stringsAsFactors = F)
+  # Guess each column's type; funs() was deprecated in dplyr 0.8.0
+  out[] <- lapply(out, utils::type.convert, as.is = T)
+  out
 }
